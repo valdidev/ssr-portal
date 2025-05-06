@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Añadir Usuario</title>
-    <link rel="stylesheet" href="/styles.css">
-</head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h1>Añadir Nuevo Usuario</h1>
-        <form id="addUserForm" action="/add-user" method="POST" class="form">
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" id="name" name="name" class="input" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="input" required>
-            </div>
-            <button type="submit" class="submit-btn">Añadir Usuario</button>
-        </form>
-        <a href="/users" class="back-link">Volver</a>
+      <h1>Añadir Nuevo Usuario</h1>
+      <form id="addUserForm" action="/add-user" method="POST" class="form">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" name="name" class="input" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="input" required />
+        </div>
+        <button type="submit" class="submit-btn">Añadir Usuario</button>
+      </form>
+      <a href="/users" class="back-link">Volver</a>
     </div>
     <script>
-        // Aplicar tema guardado
-        const body = document.body;
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        body.classList.add(currentTheme + '-theme');
-        // Enviar formulario con Enter
-        document.getElementById('addUserForm').addEventListener('keydown', function (event) {
-            if (event.key === 'Enter' && !event.shiftKey) {
-                event.preventDefault();
-                this.submit();
-            }
+      // Aplicar tema guardado
+      const body = document.body;
+      const currentTheme = localStorage.getItem("theme") || "light";
+      body.classList.add(currentTheme + "-theme");
+      // Enviar formulario con Enter
+      document
+        .getElementById("addUserForm")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            this.submit();
+          }
         });
     </script>
-</body>
-
+  </body>
 </html>

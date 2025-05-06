@@ -1,148 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Tareas y Usuarios</title>
-    <link rel="stylesheet" href="/styles.css">
-</head>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
 
-<body>
+  <body>
     <button id="themeToggle" class="theme-btn">🌙 Cambiar Tema</button>
     <div class="container">
-        <div class="header">
-            <h1>PORTAL ssr</h1>
-        </div>
-        <div class="tabs">
-            <button class="tab-btn <%= activeTab === 'tasks' ? 'active' : '' %>" onclick="showTab('tasks')">Lista de
-                Tareas</button>
-            <button class="tab-btn <%= activeTab === 'users' ? 'active' : '' %>" onclick="showTab('users')">Gestión de
-                Usuarios</button>
-        </div>
-        <div id="tasksTab" class="tab-content <%= activeTab === 'tasks' ? '' : 'hidden' %>">
-            <a href="/add" class="add-btn">Añadir</a>
-            <ul class="task-list">
-                <% tasks.forEach(task=> { %>
-                    <li class="task-item">
-                        <div class="task-content">
-                            <h2>
-                                <%= task.title %>
-                            </h2>
-                            <p>
-                                <%= task.description %>
-                            </p>
-                            <div class="task-actions">
-                                <a href="/edit/<%= task.id %>" class="edit-btn">Editar</a>
-                                <button onclick="showDeleteModal(<%= task.id %>, 'task')"
-                                    class="delete-btn">Eliminar</button>
-                            </div>
-                        </div>
-                        <div class="task-meta">
-                            <div class="task-priority">Prioridad: <%= task.priority %>
-                            </div>
-                            <div class="task-assignees">Personas: <%= task.assignee_count %>
-                            </div>
-                        </div>
-                    </li>
-                    <% }) %>
-            </ul>
-        </div>
-        <div id="usersTab" class="tab-content <%= activeTab === 'users' ? '' : 'hidden' %>">
-            <a href="/add-user" class="add-btn">Añadir Usuario</a>
-            <ul class="user-list">
-                <% (users || []).forEach(user=> { %>
-                    <li class="user-item">
-                        <div class="user-content">
-                            <h2>
-                                <%= user.name %>
-                            </h2>
-                            <p>
-                                <%= user.email %>
-                            </p>
-                            <div class="user-actions">
-                                <a href="/edit-user/<%= user.id %>" class="edit-btn">Editar</a>
-                                <button onclick="showDeleteModal(<%= user.id %>, 'user')"
-                                    class="delete-btn">Eliminar</button>
-                            </div>
-                        </div>
-                    </li>
-                    <% }) %>
-            </ul>
-        </div>
-        <!-- Modal de confirmación -->
-        <div id="deleteModal" class="modal hidden">
-            <div class="modal-content">
-                <h2>Confirmar Eliminación</h2>
-                <p id="deleteModalMessage"></p>
-                <div class="modal-actions">
-                    <button onclick="cancelDelete()" class="cancel-btn">Cancelar</button>
-                    <form id="deleteForm" action="" method="POST" class="inline">
-                        <button type="submit" class="confirm-btn">Confirmar</button>
-                    </form>
-                </div>
+      <div class="header">
+        <h1>PORTAL ssr</h1>
+      </div>
+      <div class="tabs">
+        <button
+          class="tab-btn <%= activeTab === 'tasks' ? 'active' : '' %>"
+          onclick="showTab('tasks')"
+        >
+          Lista de Tareas
+        </button>
+        <button
+          class="tab-btn <%= activeTab === 'users' ? 'active' : '' %>"
+          onclick="showTab('users')"
+        >
+          Gestión de Usuarios
+        </button>
+      </div>
+      <div
+        id="tasksTab"
+        class="tab-content <%= activeTab === 'tasks' ? '' : 'hidden' %>"
+      >
+        <a href="/add" class="add-btn">Añadir</a>
+        <ul class="task-list">
+          <% tasks.forEach(task=> { %>
+          <li class="task-item">
+            <div class="task-content">
+              <h2><%= task.title %></h2>
+              <p><%= task.description %></p>
+              <div class="task-actions">
+                <a href="/edit/<%= task.id %>" class="edit-btn">Editar</a>
+                <button
+                  onclick="showDeleteModal(<%= task.id %>, 'task')"
+                  class="delete-btn"
+                >
+                  Eliminar
+                </button>
+              </div>
             </div>
+            <div class="task-meta">
+              <div class="task-priority">Prioridad: <%= task.priority %></div>
+              <div class="task-assignees">
+                Personas: <%= task.assignee_count %>
+              </div>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+      <div
+        id="usersTab"
+        class="tab-content <%= activeTab === 'users' ? '' : 'hidden' %>"
+      >
+        <a href="/add-user" class="add-btn">Añadir Usuario</a>
+        <ul class="user-list">
+          <% (users || []).forEach(user=> { %>
+          <li class="user-item">
+            <div class="user-content">
+              <h2><%= user.name %></h2>
+              <p><%= user.email %></p>
+              <div class="user-actions">
+                <a href="/edit-user/<%= user.id %>" class="edit-btn">Editar</a>
+                <button
+                  onclick="showDeleteModal(<%= user.id %>, 'user')"
+                  class="delete-btn"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+      <!-- Modal de confirmación -->
+      <div id="deleteModal" class="modal hidden">
+        <div class="modal-content">
+          <h2>Confirmar Eliminación</h2>
+          <p id="deleteModalMessage"></p>
+          <div class="modal-actions">
+            <button onclick="cancelDelete()" class="cancel-btn">
+              Cancelar
+            </button>
+            <form id="deleteForm" action="" method="POST" class="inline">
+              <button type="submit" class="confirm-btn">Confirmar</button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
     <script>
-        // Modal de eliminación
-        function showDeleteModal(id, type) {
-            console.log(`Mostrando modal para ${type} ID:`, id);
-            const modal = document.getElementById('deleteModal');
-            const form = document.getElementById('deleteForm');
-            const message = document.getElementById('deleteModalMessage');
-            form.action = type === 'task' ? `/delete/${id}` : `/delete-user/${id}`;
-            message.textContent = type === 'task' ? '¿Estás seguro de que quieres eliminar esta tarea?' : '¿Estás seguro de que quieres eliminar este usuario?';
-            modal.classList.remove('hidden');
+      // Modal de eliminación
+      function showDeleteModal(id, type) {
+        console.log(`Mostrando modal para ${type} ID:`, id);
+        const modal = document.getElementById("deleteModal");
+        const form = document.getElementById("deleteForm");
+        const message = document.getElementById("deleteModalMessage");
+        form.action = type === "task" ? `/delete/${id}` : `/delete-user/${id}`;
+        message.textContent =
+          type === "task"
+            ? "¿Estás seguro de que quieres eliminar esta tarea?"
+            : "¿Estás seguro de que quieres eliminar este usuario?";
+        modal.classList.remove("hidden");
+      }
+      function cancelDelete() {
+        console.log("Cerrando modal");
+        const modal = document.getElementById("deleteModal");
+        modal.classList.add("hidden");
+      }
+      // Pestañas
+      function showTab(tab) {
+        const tasksTab = document.getElementById("tasksTab");
+        const usersTab = document.getElementById("usersTab");
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        tasksTab.classList.add("hidden");
+        usersTab.classList.add("hidden");
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        if (tab === "tasks") {
+          tasksTab.classList.remove("hidden");
+          document
+            .querySelector(`.tab-btn[onclick="showTab('tasks')"]`)
+            .classList.add("active");
+        } else {
+          usersTab.classList.remove("hidden");
+          document
+            .querySelector(`.tab-btn[onclick="showTab('users')"]`)
+            .classList.add("active");
         }
-        function cancelDelete() {
-            console.log('Cerrando modal');
-            const modal = document.getElementById('deleteModal');
-            modal.classList.add('hidden');
-        }
-        // Pestañas
-        function showTab(tab) {
-            const tasksTab = document.getElementById('tasksTab');
-            const usersTab = document.getElementById('usersTab');
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            tasksTab.classList.add('hidden');
-            usersTab.classList.add('hidden');
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            if (tab === 'tasks') {
-                tasksTab.classList.remove('hidden');
-                document.querySelector(`.tab-btn[onclick="showTab('tasks')"]`).classList.add('active');
-            } else {
-                usersTab.classList.remove('hidden');
-                document.querySelector(`.tab-btn[onclick="showTab('users')"]`).classList.add('active');
-            }
-            window.history.pushState(null, null, tab === 'tasks' ? '/' : '/users');
-        }
-        // Cambio de tema
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        body.classList.add(currentTheme + '-theme');
+        window.history.pushState(null, null, tab === "tasks" ? "/" : "/users");
+      }
+      // Cambio de tema
+      const themeToggle = document.getElementById("themeToggle");
+      const body = document.body;
+      const currentTheme = localStorage.getItem("theme") || "light";
+      body.classList.add(currentTheme + "-theme");
+      updateThemeButton();
+      themeToggle.addEventListener("click", () => {
+        const isLightTheme = body.classList.contains("light-theme");
+        body.classList.replace(
+          isLightTheme ? "light-theme" : "dark-theme",
+          isLightTheme ? "dark-theme" : "light-theme"
+        );
+        localStorage.setItem("theme", isLightTheme ? "dark" : "light");
         updateThemeButton();
-        themeToggle.addEventListener('click', () => {
-            const isLightTheme = body.classList.contains('light-theme');
-            body.classList.replace(
-                isLightTheme ? 'light-theme' : 'dark-theme',
-                isLightTheme ? 'dark-theme' : 'light-theme'
-            );
-            localStorage.setItem('theme', isLightTheme ? 'dark' : 'light');
-            updateThemeButton();
-        });
-        function updateThemeButton() {
-            const isLightTheme = body.classList.contains('light-theme');
-            themeToggle.textContent = isLightTheme ? '🌙 Cambiar a Oscuro' : '☀️ Cambiar a Claro';
-        }
-        // Asegurar que el modal esté oculto al cargar la página
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Página cargada, asegurando que el modal esté oculto');
-            const modal = document.getElementById('deleteModal');
-            modal.classList.add('hidden');
-        });
+      });
+      function updateThemeButton() {
+        const isLightTheme = body.classList.contains("light-theme");
+        themeToggle.textContent = isLightTheme
+          ? "🌙 Cambiar a Oscuro"
+          : "☀️ Cambiar a Claro";
+      }
+      // Asegurar que el modal esté oculto al cargar la página
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("Página cargada, asegurando que el modal esté oculto");
+        const modal = document.getElementById("deleteModal");
+        modal.classList.add("hidden");
+      });
     </script>
-</body>
-
+  </body>
 </html>
