@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Lista de Tareas</h1>
+        <a href="/add" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Añadir Tarea</a>
+        <ul class="space-y-4">
+            <% tasks.forEach(task=> { %>
+                <li class="bg-white p-4 rounded shadow">
+                    <h2 class="text-xl font-semibold">
+                        <%= task.title %>
+                    </h2>
+                    <p>
+                        <%= task.description %>
+                    </p>
+                    <form action="/delete/<%= task.id %>" method="POST" class="inline">
+                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Eliminar</button>
+                    </form>
+                </li>
+                <% }) %>
+        </ul>
+    </div>
+</body>
+
+</html>
