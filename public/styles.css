@@ -9,6 +9,7 @@ body.light-theme .container {
 }
 
 body.light-theme .task-item,
+body.light-theme .user-item,
 body.light-theme .form,
 body.light-theme .modal-content {
     background-color: #edf2f7;
@@ -60,6 +61,17 @@ body.light-theme .task-priority {
     color: #4a5568;
 }
 
+body.light-theme .tab-btn {
+    background-color: #e2e8f0;
+    color: #1a202c;
+}
+
+body.light-theme .tab-btn:hover,
+body.light-theme .tab-btn.active {
+    background-color: #3182ce;
+    color: #fff;
+}
+
 /* Tema oscuro */
 body.dark-theme {
     background-color: #1a202c;
@@ -71,6 +83,7 @@ body.dark-theme .container {
 }
 
 body.dark-theme .task-item,
+body.dark-theme .user-item,
 body.dark-theme .form,
 body.dark-theme .modal-content {
     background-color: #4a5568;
@@ -122,6 +135,17 @@ body.dark-theme .task-priority {
     color: #a0aec0;
 }
 
+body.dark-theme .tab-btn {
+    background-color: #4a5568;
+    color: #e2e8f0;
+}
+
+body.dark-theme .tab-btn:hover,
+body.dark-theme .tab-btn.active {
+    background-color: #63b3ed;
+    color: #1a202c;
+}
+
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
@@ -157,6 +181,34 @@ h1 {
     font-size: 1rem;
 }
 
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 4px;
+    transition: background-color 0.2s;
+}
+
+.tab-btn.active {
+    font-weight: 600;
+}
+
+.tab-content {
+    display: block;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
 .add-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -165,12 +217,14 @@ h1 {
     margin-bottom: 20px;
 }
 
-.task-list {
+.task-list,
+.user-list {
     list-style: none;
     padding: 0;
 }
 
-.task-item {
+.task-item,
+.user-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -180,20 +234,24 @@ h1 {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.task-content {
+.task-content,
+.user-content {
     flex-grow: 1;
 }
 
-.task-content h2 {
+.task-content h2,
+.user-content h2 {
     font-size: 1.5rem;
     margin: 0 0 8px;
 }
 
-.task-content p {
+.task-content p,
+.user-content p {
     margin: 0 0 12px;
 }
 
-.task-actions {
+.task-actions,
+.user-actions {
     display: flex;
     gap: 8px;
 }
@@ -237,6 +295,10 @@ select.input {
     border: 1px solid;
     border-radius: 4px;
     font-size: 1rem;
+}
+
+select.input[multiple] {
+    height: 100px;
 }
 
 .textarea {
