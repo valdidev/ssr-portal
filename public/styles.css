@@ -27,7 +27,8 @@ body.light-theme .submit-btn,
 body.light-theme .add-btn,
 body.light-theme .edit-btn,
 body.light-theme .delete-btn,
-body.light-theme .confirm-btn {
+body.light-theme .confirm-btn,
+body.light-theme .theme-btn {
     background-color: #3182ce;
     color: #fff;
 }
@@ -36,7 +37,8 @@ body.light-theme .submit-btn:hover,
 body.light-theme .add-btn:hover,
 body.light-theme .edit-btn:hover,
 body.light-theme .delete-btn:hover,
-body.light-theme .confirm-btn:hover {
+body.light-theme .confirm-btn:hover,
+body.light-theme .theme-btn:hover {
     background-color: #2b6cb0;
 }
 
@@ -91,7 +93,8 @@ body.dark-theme .submit-btn,
 body.dark-theme .add-btn,
 body.dark-theme .edit-btn,
 body.dark-theme .delete-btn,
-body.dark-theme .confirm-btn {
+body.dark-theme .confirm-btn,
+body.dark-theme .theme-btn {
     background-color: #63b3ed;
     color: #1a202c;
 }
@@ -100,7 +103,8 @@ body.dark-theme .submit-btn:hover,
 body.dark-theme .add-btn:hover,
 body.dark-theme .edit-btn:hover,
 body.dark-theme .delete-btn:hover,
-body.dark-theme .confirm-btn:hover {
+body.dark-theme .confirm-btn:hover,
+body.dark-theme .theme-btn:hover {
     background-color: #4299e1;
 }
 
@@ -142,9 +146,7 @@ body {
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -154,11 +156,15 @@ h1 {
 }
 
 .theme-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
     padding: 8px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    z-index: 1000;
 }
 
 .tabs {

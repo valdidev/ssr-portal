@@ -9,19 +9,19 @@
 </head>
 
 <body>
+    <button id="themeToggle" class="theme-btn">🌙 Cambiar Tema</button>
     <div class="container">
         <div class="header">
-            <h1>Gestión de Tareas y Usuarios</h1>
-            <button id="themeToggle" class="theme-btn">🌙 Cambiar Tema</button>
+            <h1>PORTAL ssr</h1>
         </div>
         <div class="tabs">
-            <button class="tab-btn <%= activeTab === 'tasks' ? 'active' : '' %>"
-                onclick="showTab('tasks')">Tareas</button>
-            <button class="tab-btn <%= activeTab === 'users' ? 'active' : '' %>"
-                onclick="showTab('users')">Usuarios</button>
+            <button class="tab-btn <%= activeTab === 'tasks' ? 'active' : '' %>" onclick="showTab('tasks')">Lista de
+                Tareas</button>
+            <button class="tab-btn <%= activeTab === 'users' ? 'active' : '' %>" onclick="showTab('users')">Gestión de
+                Usuarios</button>
         </div>
         <div id="tasksTab" class="tab-content <%= activeTab === 'tasks' ? '' : 'hidden' %>">
-            <a href="/add" class="add-btn">Añadir Tarea</a>
+            <a href="/add" class="add-btn">Añadir</a>
             <ul class="task-list">
                 <% tasks.forEach(task=> { %>
                     <li class="task-item">
