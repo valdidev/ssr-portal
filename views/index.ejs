@@ -38,7 +38,11 @@
                                     class="delete-btn">Eliminar</button>
                             </div>
                         </div>
-                        <div class="task-priority">Prioridad: <%= task.priority %>
+                        <div class="task-meta">
+                            <div class="task-priority">Prioridad: <%= task.priority %>
+                            </div>
+                            <div class="task-assignees">Personas: <%= task.assignee_count %>
+                            </div>
                         </div>
                     </li>
                     <% }) %>

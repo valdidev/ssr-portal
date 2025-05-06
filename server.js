@@ -35,7 +35,13 @@ app.use(express.static('public'));
 // Ruta principal: Listar tareas y usuarios
 app.get('/', async (req, res) => {
     try {
-        const [tasks] = await pool.query('SELECT * FROM tasks ORDER BY priority ASC, id ASC');
+        const [tasks] = await pool.query(`
+      SELECT t.*, COUNT(ut.user_id) as assignee_count
+      FROM tasks t
+      LEFT JOIN user_tasks ut ON t.id = ut.task_id
+      GROUP BY t.id
+      ORDER BY t.priority ASC, t.id ASC
+    `);
         const [users] = await pool.query('SELECT * FROM users ORDER BY name ASC');
         res.render('index', { tasks, users, activeTab: 'tasks' });
     } catch (err) {
@@ -47,7 +53,13 @@ app.get('/', async (req, res) => {
 // Ruta para listar usuarios
 app.get('/users', async (req, res) => {
     try {
-        const [tasks] = await pool.query('SELECT * FROM tasks ORDER BY priority ASC, id ASC');
+        const [tasks] = await pool.query(`
+      SELECT t.*, COUNT(ut.user_id) as assignee_count
+      FROM tasks t
+      LEFT JOIN user_tasks ut ON t.id = ut.task_id
+      GROUP BY t.id
+      ORDER BY t.priority ASC, t.id ASC
+    `);
         const [users] = await pool.query('SELECT * FROM users ORDER BY name ASC');
         res.render('index', { tasks, users, activeTab: 'users' });
     } catch (err) {

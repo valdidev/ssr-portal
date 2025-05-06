@@ -57,19 +57,9 @@ body.light-theme .back-link:hover {
     color: #2b6cb0;
 }
 
-body.light-theme .task-priority {
+body.light-theme .task-priority,
+body.light-theme .task-assignees {
     color: #4a5568;
-}
-
-body.light-theme .tab-btn {
-    background-color: #e2e8f0;
-    color: #1a202c;
-}
-
-body.light-theme .tab-btn:hover,
-body.light-theme .tab-btn.active {
-    background-color: #3182ce;
-    color: #fff;
 }
 
 /* Tema oscuro */
@@ -131,19 +121,9 @@ body.dark-theme .back-link:hover {
     color: #4299e1;
 }
 
-body.dark-theme .task-priority {
+body.dark-theme .task-priority,
+body.dark-theme .task-assignees {
     color: #a0aec0;
-}
-
-body.dark-theme .tab-btn {
-    background-color: #4a5568;
-    color: #e2e8f0;
-}
-
-body.dark-theme .tab-btn:hover,
-body.dark-theme .tab-btn.active {
-    background-color: #63b3ed;
-    color: #1a202c;
 }
 
 /* Estilos generales */
@@ -256,7 +236,14 @@ h1 {
     gap: 8px;
 }
 
-.task-priority {
+.task-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.task-priority,
+.task-assignees {
     font-size: 1rem;
     font-weight: 500;
     padding: 4px 8px;
