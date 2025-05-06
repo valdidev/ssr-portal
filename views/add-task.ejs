@@ -5,33 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir Tarea</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
-<body class="bg-gray-100">
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold mb-4">Añadir Nueva Tarea</h1>
-        <form id="addTaskForm" action="/add" method="POST" class="bg-white p-4 rounded shadow">
-            <div class="mb-4">
-                <label for="title" class="block text-sm font-medium">Título</label>
-                <input type="text" id="title" name="title" class="w-full p-2 border rounded" required>
+<body>
+    <div class="container">
+        <h1>Añadir Nueva Tarea</h1>
+        <form id="addTaskForm" action="/add" method="POST" class="form">
+            <div class="form-group">
+                <label for="title">Título</label>
+                <input type="text" id="title" name="title" class="input" required>
             </div>
-            <div class="mb-4">
-                <label for="description" class="block text-sm font-medium">Descripción</label>
-                <textarea id="description" name="description" class="w-full p-2 border rounded" required></textarea>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea id="description" name="description" class="textarea" required></textarea>
             </div>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Añadir Tarea</button>
+            <button type="submit" class="submit-btn">Añadir Tarea</button>
         </form>
-        <a href="/" class="text-blue-500 mt-4 inline-block">Volver</a>
-        <script>
-            document.getElementById('addTaskForm').addEventListener('keydown', function (event) {
-                if (event.key === 'Enter' && !event.shiftKey) {
-                    event.preventDefault();
-                    this.submit();
-                }
-            });
-        </script>
+        <a href="/" class="back-link">Volver</a>
     </div>
+    <script>
+        // Aplicar tema guardado
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.classList.add(currentTheme + '-theme');
+    </script>
 </body>
 
 </html>

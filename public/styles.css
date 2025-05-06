@@ -1,0 +1,280 @@
+/* Tema claro por defecto */
+body.light-theme {
+    background-color: #f7fafc;
+    color: #1a202c;
+}
+
+body.light-theme .container {
+    background-color: #fff;
+}
+
+body.light-theme .task-item,
+body.light-theme .form,
+body.light-theme .modal-content {
+    background-color: #edf2f7;
+}
+
+body.light-theme .input,
+body.light-theme .textarea {
+    background-color: #fff;
+    border-color: #cbd5e0;
+    color: #1a202c;
+}
+
+body.light-theme .submit-btn,
+body.light-theme .add-btn,
+body.light-theme .edit-btn,
+body.light-theme .delete-btn,
+body.light-theme .confirm-btn {
+    background-color: #3182ce;
+    color: #fff;
+}
+
+body.light-theme .submit-btn:hover,
+body.light-theme .add-btn:hover,
+body.light-theme .edit-btn:hover,
+body.light-theme .delete-btn:hover,
+body.light-theme .confirm-btn:hover {
+    background-color: #2b6cb0;
+}
+
+body.light-theme .cancel-btn {
+    background-color: #e2e8f0;
+    color: #1a202c;
+}
+
+body.light-theme .cancel-btn:hover {
+    background-color: #cbd5e0;
+}
+
+body.light-theme .back-link {
+    color: #3182ce;
+}
+
+body.light-theme .back-link:hover {
+    color: #2b6cb0;
+}
+
+/* Tema oscuro */
+body.dark-theme {
+    background-color: #1a202c;
+    color: #e2e8f0;
+}
+
+body.dark-theme .container {
+    background-color: #2d3748;
+}
+
+body.dark-theme .task-item,
+body.dark-theme .form,
+body.dark-theme .modal-content {
+    background-color: #4a5568;
+}
+
+body.dark-theme .input,
+body.dark-theme .textarea {
+    background-color: #2d3748;
+    border-color: #718096;
+    color: #e2e8f0;
+}
+
+body.dark-theme .submit-btn,
+body.dark-theme .add-btn,
+body.dark-theme .edit-btn,
+body.dark-theme .delete-btn,
+body.dark-theme .confirm-btn {
+    background-color: #63b3ed;
+    color: #1a202c;
+}
+
+body.dark-theme .submit-btn:hover,
+body.dark-theme .add-btn:hover,
+body.dark-theme .edit-btn:hover,
+body.dark-theme .delete-btn:hover,
+body.dark-theme .confirm-btn:hover {
+    background-color: #4299e1;
+}
+
+body.dark-theme .cancel-btn {
+    background-color: #718096;
+    color: #e2e8f0;
+}
+
+body.dark-theme .cancel-btn:hover {
+    background-color: #4a5568;
+}
+
+body.dark-theme .back-link {
+    color: #63b3ed;
+}
+
+body.dark-theme .back-link:hover {
+    color: #4299e1;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.theme-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.add-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.task-item h2 {
+    font-size: 1.5rem;
+    margin: 0 0 8px;
+}
+
+.task-item p {
+    margin: 0 0 12px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.form {
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 16px;
+    text-decoration: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    padding: 24px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.modal-content h2 {
+    font-size: 1.25rem;
+    margin: 0 0 16px;
+}
+
+.modal-content p {
+    margin: 0 0 24px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.cancel-btn,
+.confirm-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
