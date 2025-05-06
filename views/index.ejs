@@ -21,9 +21,13 @@
                     <p>
                         <%= task.description %>
                     </p>
-                    <form action="/delete/<%= task.id %>" method="POST" class="inline">
-                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Eliminar</button>
-                    </form>
+                    <div class="mt-2">
+                        <a href="/edit/<%= task.id %>"
+                            class="bg-yellow-500 text-white px-2 py-1 rounded mr-2">Editar</a>
+                        <form action="/delete/<%= task.id %>" method="POST" class="inline">
+                            <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Eliminar</button>
+                        </form>
+                    </div>
                 </li>
                 <% }) %>
         </ul>

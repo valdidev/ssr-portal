@@ -60,6 +60,34 @@ app.post('/add', async (req, res) => {
     }
 });
 
+// Ruta para mostrar formulario de edición
+app.get('/edit/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const [rows] = await pool.query('SELECT * FROM tasks WHERE id = ?', [id]);
+        if (rows.length === 0) {
+            return res.status(404).send('Tarea no encontrada');
+        }
+        res.render('edit-task', { task: rows[0] });
+    } catch (err) {
+        console.error('Error al obtener la tarea:', err);
+        res.status(500).send('Error en el servidor');
+    }
+});
+
+// Ruta para actualizar una tarea
+app.post('/edit/:id', async (req, res) => {
+    const { id } = req.params;
+    const { title, description } = req.body;
+    try {
+        await pool.query('UPDATE tasks SET title = ?, description = ? WHERE id = ?', [title, description, id]);
+        res.redirect('/');
+    } catch (err) {
+        console.error('Error al actualizar:', err);
+        res.status(500).send('Error al actualizar la tarea');
+    }
+});
+
 // Ruta para eliminar una tarea
 app.post('/delete/:id', async (req, res) => {
     const { id } = req.params;
