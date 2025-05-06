@@ -21,6 +21,15 @@
                 <textarea id="description" name="description" class="textarea"
                     required><%= task.description %></textarea>
             </div>
+            <div class="form-group">
+                <label for="priority">Prioridad (1-10)</label>
+                <select id="priority" name="priority" class="input" required>
+                    <% for (let i=1; i <=10; i++) { %>
+                        <option value="<%= i %>" <%=task.priority===i ? 'selected' : '' %>><%= i %>
+                        </option>
+                        <% } %>
+                </select>
+            </div>
             <button type="submit" class="submit-btn">Actualizar Tarea</button>
         </form>
         <a href="/" class="back-link">Volver</a>
@@ -30,6 +39,14 @@
         const body = document.body;
         const currentTheme = localStorage.getItem('theme') || 'light';
         body.classList.add(currentTheme + '-theme');
+
+        // Enviar formulario con Enter
+        document.getElementById('editTaskForm').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                this.submit();
+            }
+        });
     </script>
 </body>
 

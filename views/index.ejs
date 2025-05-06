@@ -18,15 +18,19 @@
         <ul class="task-list">
             <% tasks.forEach(task=> { %>
                 <li class="task-item">
-                    <h2>
-                        <%= task.title %>
-                    </h2>
-                    <p>
-                        <%= task.description %>
-                    </p>
-                    <div class="task-actions">
-                        <a href="/edit/<%= task.id %>" class="edit-btn">Editar</a>
-                        <button onclick="showDeleteModal(<%= task.id %>)" class="delete-btn">Eliminar</button>
+                    <div class="task-content">
+                        <h2>
+                            <%= task.title %>
+                        </h2>
+                        <p>
+                            <%= task.description %>
+                        </p>
+                        <div class="task-actions">
+                            <a href="/edit/<%= task.id %>" class="edit-btn">Editar</a>
+                            <button onclick="showDeleteModal(<%= task.id %>)" class="delete-btn">Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="task-priority">Prioridad: <%= task.priority %>
                     </div>
                 </li>
                 <% }) %>
@@ -50,7 +54,7 @@
     <script>
         // Modal de eliminación
         function showDeleteModal(taskId) {
-            console.log('Mostrando modal para tarea ID:', taskId); // Log para depuración
+            console.log('Mostrando modal para tarea ID:', taskId);
             const modal = document.getElementById('deleteModal');
             const form = document.getElementById('deleteForm');
             form.action = `/delete/${taskId}`;
@@ -58,7 +62,7 @@
         }
 
         function cancelDelete() {
-            console.log('Cerrando modal'); // Log para depuración
+            console.log('Cerrando modal');
             const modal = document.getElementById('deleteModal');
             modal.classList.add('hidden');
         }
@@ -87,7 +91,7 @@
 
         // Asegurar que el modal esté oculto al cargar la página
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('Página cargada, asegurando que el modal esté oculto'); // Log para depuración
+            console.log('Página cargada, asegurando que el modal esté oculto');
             const modal = document.getElementById('deleteModal');
             modal.classList.add('hidden');
         });

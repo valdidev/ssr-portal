@@ -32,10 +32,10 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Ruta principal: Listar tareas
+// Ruta principal: Listar tareas ordenadas por prioridad
 app.get('/', async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM tasks ORDER BY id ASC');
+        const [rows] = await pool.query('SELECT * FROM tasks ORDER BY priority ASC, id ASC');
         res.render('index', { tasks: rows });
     } catch (err) {
         console.error('Error en la consulta:', err);
@@ -50,9 +50,9 @@ app.get('/add', (req, res) => {
 
 // Ruta para añadir una nueva tarea
 app.post('/add', async (req, res) => {
-    const { title, description } = req.body;
+    const { title, description, priority } = req.body;
     try {
-        await pool.query('INSERT INTO tasks (title, description) VALUES (?, ?)', [title, description]);
+        await pool.query('INSERT INTO tasks (title, description, priority) VALUES (?, ?, ?)', [title, description, parseInt(priority)]);
         res.redirect('/');
     } catch (err) {
         console.error('Error al añadir:', err);
@@ -78,9 +78,9 @@ app.get('/edit/:id', async (req, res) => {
 // Ruta para actualizar una tarea
 app.post('/edit/:id', async (req, res) => {
     const { id } = req.params;
-    const { title, description } = req.body;
+    const { title, description, priority } = req.body;
     try {
-        await pool.query('UPDATE tasks SET title = ?, description = ? WHERE id = ?', [title, description, id]);
+        await pool.query('UPDATE tasks SET title = ?, description = ?, priority = ? WHERE id = ?', [title, description, parseInt(priority), id]);
         res.redirect('/');
     } catch (err) {
         console.error('Error al actualizar:', err);
